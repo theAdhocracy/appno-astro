@@ -1,0 +1,30 @@
+:root {
+	/* Design Tokens */
+	--t-white: #ffffff;
+	--t-fog: #f3f6f9;
+	--t-black: #1b1b1b;
+	--t-squid-ink: #282d30;
+	--t-neon: #00e9c2;
+
+	--t-poppins: "Poppins", "Helvetica", "Calibri", sans-serif;
+	--t-mono: "Space Mono", "Courier New", "Courier", monospace;
+
+	/* Utilities */
+	--c-text: var(--t-white);
+	--c-text-invert: var(--t-black);
+	--c-text-faded: color-mix(var(--t-white), transparent 50%);
+
+	--c-border: var(--t-white);
+	--c-highlight: var(--t-neon);
+
+	--c-bg-page: var(--t-black);
+	--c-bg-block: var(--t-squid-ink);
+
+	--f-sans: var(--t-poppins);
+	--f-mono: var(--t-mono);
+}
+
+html,
+body {
+	background-color: var(--c-bg-page);
+}
