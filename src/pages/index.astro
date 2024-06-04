@@ -5,12 +5,13 @@ import Layout from "../layouts/Layout.astro";
 import CTA from "../components/CTA.astro";
 import RightDownArrow from "../assets/right-down-arrow.astro";
 import PageCard from "../components/CardPage.astro";
+import GridRevelation from "../components/GridRevelation.astro";
 
 const data = await sanityClient.fetch(`*[_type == "homepage"]`);
 const homepage = data?.[0];
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Appnovation">
 	<main>
 		<section class="hero">
 			<RightDownArrow />
@@ -40,6 +41,20 @@ const homepage = data?.[0];
 				))
 			}
 		</section>
+		{
+			homepage.content?.map((block: any) => {
+				switch (block._type) {
+					case "revelation_grid":
+						return <GridRevelation {...block} />;
+					case "logo_grid":
+						return <p>Logo Grid</p>;
+					case "banner":
+						return <p>Banner</p>;
+					default:
+						return <p>Unknown Component</p>;
+				}
+			})
+		}
 	</main>
 </Layout>
 
@@ -59,7 +74,7 @@ const homepage = data?.[0];
 		font-family: var(--f-sans);
 	}
 
-	:where(main > *) {
+	:global(:where(main > *)) {
 		grid-column: content;
 	}
 
