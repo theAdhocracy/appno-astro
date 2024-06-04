@@ -1,28 +1,30 @@
 ---
-import imageUrlBuilder from '@sanity/image-url'
-import type {ImageUrlBuilder} from '@sanity/image-url/lib/types/builder'
-import {sanityClient} from 'sanity:client'
+import imageUrlBuilder from "@sanity/image-url";
+import type { ImageUrlBuilder } from "@sanity/image-url/lib/types/builder";
+import { sanityClient } from "sanity:client";
 
-const builder = imageUrlBuilder(sanityClient)
+const builder = imageUrlBuilder(sanityClient);
 
-const {node} = Astro.props
-const {width = 960} = Astro.props
-let image: ImageUrlBuilder | undefined
+const { node } = Astro.props;
+const { width = 960 } = Astro.props;
+let image: ImageUrlBuilder | undefined;
 
 // See https://www.sanity.io/docs/presenting-images for general documentation on
 // presenting images, and https://www.sanity.io/docs/image-url for specifics on
 // this builder API
 try {
-  image = node && node.image && node.image.asset && builder.image(node.image).width(width).fit('max').auto('format')
+	image =
+		node &&
+		node.image &&
+		node.image.asset &&
+		builder.image(node.image).width(width).fit("max").auto("format");
 } catch (error) {
-  console.error(error)
+	console.error(error);
 }
-
 ---
 
-{image && <img src={image.url()} alt={node.alt || ''} />}
+{image && <img src={image.url()} alt={node.alt || ""} />}
 
-
-<script define:vars={{image, node}}>
-	console.log(node)
+<script define:vars={{ image, node }}>
+	console.log(node);
 </script>

@@ -1,13 +1,12 @@
 ---
-import Image from '../components/Image.astro';
-
+import Image from "../components/Image.astro";
 
 interface Props {
 	title: string;
 	desc: string;
 	category: string;
 	url: string;
-	thumb?: any
+	thumb?: any;
 }
 
 const { title, desc, category, url, thumb } = Astro.props;

@@ -1,36 +1,56 @@
 ---
-import { sanityClient } from 'sanity:client';
+import { sanityClient } from "sanity:client";
 
-import Layout from '../layouts/Layout.astro';
-import CTA from '../components/CTA.astro';
-import RightDownArrow from '../assets/right-down-arrow.astro'
-import PageCard from '../components/CardPage.astro';
+import Layout from "../layouts/Layout.astro";
+import CTA from "../components/CTA.astro";
+import RightDownArrow from "../assets/right-down-arrow.astro";
+import PageCard from "../components/CardPage.astro";
 
 const data = await sanityClient.fetch(`*[_type == "homepage"]`);
-const homepage = data?.[0]
+const homepage = data?.[0];
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
 		<section class="hero">
 			<RightDownArrow />
-			<h1 class="u-eyebrow">{homepage.title}<br>{homepage.subtitle}</h1>
+			<h1 class="u-eyebrow">{homepage.title}<br />{homepage.subtitle}</h1>
 			<p>{homepage.copy}</p>
-			<div>{homepage.links.map((link: any, index: number) => <CTA url={link.url} label={link.label} type={index === 1 ? 'highlight' : ''} />)}</div>
+			<div>
+				{
+					homepage.links.map((link: any, index: number) => (
+						<CTA
+							url={link.url}
+							label={link.label}
+							type={index === 1 ? "highlight" : ""}
+						/>
+					))
+				}
+			</div>
 		</section>
 		<section class="highlight-grid">
-			{homepage.highlights.map((highlight: any) => <PageCard {...highlight} desc={highlight.description} url={`/${highlight.slug.current}`} thumb={highlight.thumbnail?.[0]} />)}
+			{
+				homepage.highlights.map((highlight: any) => (
+					<PageCard
+						{...highlight}
+						desc={highlight.description}
+						url={`/${highlight.slug.current}`}
+						thumb={highlight.thumbnail?.[0]}
+					/>
+				))
+			}
 		</section>
 	</main>
 </Layout>
 
 <style>
-	
 	main {
 		--gutter: minmax(2rem, 1fr);
 
 		display: grid;
-		grid-template-columns: [full-start] var(--gutter) [content-start] min(78rem, calc(100% - 8rem)) [content-end] var(--gutter) [full-end];
+		grid-template-columns:
+			[full-start] var(--gutter) [content-start] min(78rem, calc(100% - 8rem))
+			[content-end] var(--gutter) [full-end];
 		gap: 6rem 2rem;
 		padding: 6rem 0;
 		margin: 0;
@@ -61,7 +81,12 @@ const homepage = data?.[0]
 				grid-column: full;
 
 				display: grid;
-				grid-template-columns: [breakout-start] var(--gutter) [content-start] repeat(3, min(24.7rem, calc((100% - 12rem) / 3))) [content-end] var(--gutter) [breakout-end];
+				grid-template-columns:
+					[breakout-start] var(--gutter) [content-start] repeat(
+						3,
+						min(24.7rem, calc((100% - 12rem) / 3))
+					)
+					[content-end] var(--gutter) [breakout-end];
 				gap: 2rem;
 
 				svg {
@@ -95,7 +120,7 @@ const homepage = data?.[0]
 			grid-row: 1;
 			grid-column: 2 / 3;
 			margin-block-start: 1rem;
-		}		
+		}
 
 		p {
 			grid-column: 3 / 5;
@@ -125,6 +150,6 @@ const homepage = data?.[0]
 	}
 </style>
 
-<script define:vars={{homepage}}>
-	console.log(homepage)
+<script define:vars={{ homepage }}>
+	console.log(homepage);
 </script>
