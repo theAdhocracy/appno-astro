@@ -56,3 +56,9 @@ button {
 	line-height: 1.66;
 	color: var(--t-grey);
 }
+
+.u-title {
+	font-size: clamp(1.25rem, 0.8152rem + 2.1739vi, 2.5rem);
+	font-weight: 400;
+	line-height: 1.3;
+}
