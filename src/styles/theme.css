@@ -4,6 +4,7 @@
 	--t-fog: #f3f6f9;
 	--t-black: #1b1b1b;
 	--t-squid-ink: #282d30;
+	--t-grey: #adadad;
 	--t-neon: #00e9c2;
 
 	--t-poppins: "Poppins", "Helvetica", "Calibri", sans-serif;
@@ -32,4 +33,22 @@ body {
 *:focus-visible {
 	outline: 2px solid var(--c-highlight);
 	outline-offset: 0.25rem;
+}
+
+/* Defaults */
+
+a {
+	color: var(--c-text);
+	text-underline-offset: 0.35em;
+}
+
+/* Utility Classes */
+
+.u-eyebrow {
+	font-family: var(--f-mono);
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	font-weight: 400;
+	line-height: 1.66;
+	color: var(--t-grey);
 }
