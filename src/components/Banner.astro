@@ -1,0 +1,44 @@
+---
+import CTA from "./CTA.astro";
+
+interface Props {
+	title: string;
+	copy: string;
+	link: {
+		url: string;
+		label: string;
+	}[];
+}
+
+const { title, copy, link } = Astro.props;
+---
+
+<aside class="banner">
+	<h2 class="u-eyebrow">{title}</h2>
+	<p>{copy}</p>
+	<CTA url={link[0]?.url} label={link[0]?.label} type="inverted" />
+</aside>
+
+<style>
+	.banner {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		place-content: center;
+		place-items: center;
+		padding: 3rem;
+		background-color: var(--c-highlight);
+		color: var(--c-text-invert);
+		text-align: center;
+	}
+
+	h2 {
+		color: var(--c-text-invert);
+	}
+
+	p {
+		max-width: 45ch;
+		font-size: clamp(1.125rem, 0.8207rem + 1.5217vi, 2rem);
+		line-height: 1.25;
+	}
+</style>

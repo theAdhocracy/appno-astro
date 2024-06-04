@@ -7,6 +7,7 @@ import RightDownArrow from "../assets/right-down-arrow.astro";
 import PageCard from "../components/CardPage.astro";
 import GridRevelation from "../components/GridRevelation.astro";
 import GridLogo from "../components/GridLogo.astro";
+import Banner from "../components/Banner.astro";
 
 const data = await sanityClient.fetch(`*[_type == "homepage"]`);
 const homepage = data?.[0];
@@ -24,7 +25,7 @@ const homepage = data?.[0];
 						<CTA
 							url={link.url}
 							label={link.label}
-							type={index === 1 ? "highlight" : ""}
+							type={index === 1 ? "highlight" : undefined}
 						/>
 					))
 				}
@@ -50,7 +51,7 @@ const homepage = data?.[0];
 					case "logo_grid":
 						return <GridLogo {...block} />;
 					case "banner":
-						return <p>Banner</p>;
+						return <Banner {...block} />;
 					default:
 						return <p>Unknown Component</p>;
 				}
