@@ -52,7 +52,7 @@ if (Astro.request.method === "POST") {
 	<body>
 		<header class="global-header">
 			<Logo />
-			<a href="/search"><SearchIcon /></a>
+			<a href="/search" aria-label="Search"><SearchIcon /></a>
 			<button id="globalMenuButton" type="button">Menu</button>
 
 			<dialog id="globalMenuModal">
@@ -72,6 +72,7 @@ if (Astro.request.method === "POST") {
 				</nav>
 			</dialog>
 		</header>
+		<slot />
 		<footer class="global-footer">
 			<section>
 				<Logo />
@@ -80,7 +81,7 @@ if (Astro.request.method === "POST") {
 					{
 						global.footer_socials?.map((social: any) => (
 							<li>
-								<a href={social.link}>
+								<a href={social.url}>
 									<Image node={social.logo?.[0]} />
 								</a>
 							</li>
@@ -130,7 +131,6 @@ if (Astro.request.method === "POST") {
 				</ul>
 			</footer>
 		</footer>
-		<slot />
 	</body>
 </html>
 
