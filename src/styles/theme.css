@@ -13,9 +13,10 @@
 	/* Utilities */
 	--c-text: var(--t-white);
 	--c-text-invert: var(--t-black);
-	--c-text-faded: color-mix(var(--t-white), transparent 50%);
+	--c-text-faded: var(--t-grey);
 
 	--c-border: var(--t-white);
+	--c-border-faded: color-mix(in srgb, var(--c-border), transparent 80%);
 	--c-highlight: var(--t-neon);
 
 	--c-bg-page: var(--t-black);
