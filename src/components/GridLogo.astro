@@ -37,7 +37,7 @@ const { title, subtitle, link, logos } = Astro.props;
 <style>
 	.grid-logo {
 		container-type: inline-size;
-		padding: 3rem 6.375rem;
+		padding: 3rem min(6.375rem, 8vw);
 		background-color: var(--c-bg-block);
 	}
 
@@ -53,6 +53,16 @@ const { title, subtitle, link, logos } = Astro.props;
 		margin-block: 2rem;
 	}
 
+	footer {
+		display: flex;
+		place-content: center;
+	}
+
+	li {
+		width: fit-content;
+		max-width: calc(50% - 2rem);
+	}
+
 	@container (width > 40rem) {
 		ul {
 			display: grid;
@@ -61,15 +71,7 @@ const { title, subtitle, link, logos } = Astro.props;
 
 		li {
 			aspect-ratio: 1 / 1;
+			max-width: 100%;
 		}
-	}
-
-	li {
-		width: fit-content;
-	}
-
-	footer {
-		display: flex;
-		place-content: center;
 	}
 </style>

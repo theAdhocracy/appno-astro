@@ -129,7 +129,10 @@ const { title, description, subtitle, header_link, cards } = Astro.props;
 
 		.card-grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(17.875rem, 1fr));
+			grid-template-columns: repeat(
+				auto-fill,
+				minmax(min(18rem, max(min(calc(50% - 2rem), 15rem), 10rem)), 1fr)
+			);
 			gap: 2rem;
 
 			section {
@@ -149,7 +152,7 @@ const { title, description, subtitle, header_link, cards } = Astro.props;
 				color: var(--text-color);
 
 				h3 {
-					font-size: 1.25rem;
+					font-size: clamp(1rem, 0.913rem + 0.4348vi, 1.25rem);
 					line-height: 1.3;
 				}
 

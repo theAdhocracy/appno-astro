@@ -154,7 +154,7 @@ if (Astro.request.method === "POST") {
 	.global-header {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 2.5rem;
+		gap: min(2.5rem, 4vw);
 		padding: 1.75rem 2.25rem;
 		align-content: center;
 		align-items: center;
@@ -212,17 +212,23 @@ if (Astro.request.method === "POST") {
 	}
 
 	.global-footer {
-		--gutter: minmax(2rem, 1fr);
+		--gutter: minmax(min(4vw, 2rem), 1fr);
 
 		display: grid;
 		/* Content column is divided into a 40% and 60% column, based on global maximum: 78rem (-2 for gap) */
 		grid-template-columns:
 			[full-start] var(--gutter)
 			[content-start]
-			min(calc((76rem / 100) * 40), calc(((100% - 8rem) / 100) * 40))
-			min(calc((76rem / 100) * 60), calc(((100% - 8rem) / 100) * 60))
+			min(
+				calc((76rem / 100) * 40),
+				max(calc(((100% - 20vw) / 100) * 40), calc(((100% - 10rem) / 100) * 40))
+			)
+			min(
+				calc((76rem / 100) * 60),
+				max(calc(((100% - 20vw) / 100) * 60), calc(((100% - 10rem) / 100) * 60))
+			)
 			[content-end] var(--gutter) [full-end];
-		gap: 2rem;
+		gap: min(4vw, 2rem);
 
 		padding-block-start: 4rem;
 		background-color: var(--c-bg-block);
@@ -263,15 +269,6 @@ if (Astro.request.method === "POST") {
 
 			input {
 				min-width: 60%;
-				height: 3rem;
-				padding-inline: 1rem;
-				background-color: transparent;
-				border: 1px solid var(--c-border);
-				color: var(--c-text);
-			}
-
-			input::placeholder {
-				color: var(--c-text-faded);
 			}
 
 			button {
@@ -280,6 +277,11 @@ if (Astro.request.method === "POST") {
 				border: none;
 				border-radius: 0;
 				font-size: 0.75rem;
+			}
+
+			button:focus-visible {
+				outline: none;
+				background-color: var(--c-highlight);
 			}
 		}
 
@@ -330,7 +332,7 @@ if (Astro.request.method === "POST") {
 			grid-column: full;
 
 			/* Padding ensures content sits within global content grid, whilst container has full-width */
-			padding: 1.5rem max(4rem, calc((100% - 78rem) / 2));
+			padding: 1.5rem max(min(4rem, 8vw), calc((100% - 78rem) / 2));
 			place-content: space-between;
 			border-block-start: 1px solid var(--c-border-faded);
 		}

@@ -31,9 +31,15 @@ body {
 	background-color: var(--c-bg-page);
 }
 
-*:focus-visible {
+*:not(input, textarea):focus-visible {
 	outline: 2px solid var(--c-highlight);
 	outline-offset: 0.25rem;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+	outline: none;
+	border: 1px solid var(--c-highlight);
 }
 
 /* Defaults */
@@ -45,6 +51,18 @@ a {
 
 button {
 	cursor: pointer;
+}
+
+input {
+	height: 3rem;
+	padding-inline: 1rem;
+	background-color: transparent;
+	border: 1px solid var(--c-border);
+	color: var(--c-text);
+}
+
+input::placeholder {
+	color: var(--c-text-faded);
 }
 
 /* Utility Classes */
