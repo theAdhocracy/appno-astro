@@ -118,7 +118,7 @@ if (Astro.request.method === "POST") {
 					})
 				}
 			</nav>
-			<footer>
+			<section>
 				<p>{global.footer_copyright}</p>
 				<ul role="list">
 					{
@@ -129,7 +129,7 @@ if (Astro.request.method === "POST") {
 						))
 					}
 				</ul>
-			</footer>
+			</section>
 		</footer>
 	</body>
 </html>
@@ -316,8 +316,8 @@ if (Astro.request.method === "POST") {
 			}
 		}
 
-		footer,
-		footer ul {
+		section:last-child,
+		section:last-child ul {
 			display: flex;
 			flex-wrap: wrap;
 			gap: 1rem 1.5rem;
@@ -326,7 +326,7 @@ if (Astro.request.method === "POST") {
 			font-size: 0.75rem;
 		}
 
-		footer {
+		section:last-child {
 			grid-column: full;
 
 			/* Padding ensures content sits within global content grid, whilst container has full-width */
@@ -336,7 +336,7 @@ if (Astro.request.method === "POST") {
 		}
 	}
 
-	:global(.global-footer > *, .global-footer footer > *) {
+	:global(.global-footer > *, .global-footer section:last-child > *) {
 		grid-column: content;
 	}
 </style>
